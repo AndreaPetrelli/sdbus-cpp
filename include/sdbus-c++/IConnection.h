@@ -160,6 +160,8 @@ namespace sdbus {
          */
         virtual void leaveEventLoop() = 0;
 
+        virtual bool handleEvents() = 0;
+
         /*!
          * @brief Adds an ObjectManager at the specified D-Bus object path
          *

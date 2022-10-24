@@ -71,6 +71,7 @@ namespace sdbus::internal {
         void requestName(const std::string& name) override;
         void releaseName(const std::string& name) override;
         std::string getUniqueName() const override;
+        bool handleEvents() override;
         void enterEventLoop() override;
         void enterEventLoopAsync() override;
         void leaveEventLoop() override;

@@ -104,6 +104,16 @@ std::string Connection::getUniqueName() const
     return unique;
 }
 
+bool Connection::handleEvents()
+{
+    std::lock_guard guard(loopMutex_);
+
+    auto processed = processPendingRequest();
+    if (processed)
+        return true;
+    return waitForNextRequest();
+}
+
 void Connection::enterEventLoop()
 {
     loopThreadId_ = std::this_thread::get_id();
